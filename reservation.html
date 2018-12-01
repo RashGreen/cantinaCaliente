@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Request a Reservation</title>
+      <!--Set up the links to bootstrap as well as setting up the scripts to activate jQuery in order to activate bootstrap-->
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+      <script src="https://code.jquery.com/jquery.js"></script>
+      <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+</head>
+<body>
+    <!--The reservation page will have to containers: one banner to contain a button that leads to a waitlist page and a home button
+    the second container will contain a for to submit a reservation request.
+    Name
+    Phone#
+    Email  
+    CC#
+    Submit button.-->
+    <div class="container">
+            <div class="jumbotron">
+              <h1>Cantina Caliente!</h1>
+              <h3>The best spot for hot canteens!</h3>
+              <hr>
+              <a href="/waitlist.html"><button class="btn btn-danger btn-lg"><span class="fa fa-eye"></span> View Waitlist</button></a>
+            </div>
+            <div class="row">
+        
+              <div class="col-12">
+        
+                <div class="card">
+                  <div class="card-header">
+                    <h3><strong>Request a reservation:</strong></h3>
+                  </div>
+                  <div class="card-body">
+                    <form method="POST" role="form">
+        
+                      <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="Name">
+                      </div>
+        
+                      <div class="form-group">
+                        <label for="role">Email</label>
+                        <input type="text" class="form-control" id="Email">
+                      </div>
+        
+                      <div class="form-group">
+                        <label for="age">Phone Number</label>
+                        <input type="text" class="form-control" id="Number">
+                      </div>
+        
+                      <div class="form-group">
+                        <label for="force-points">Customer ID</label>
+                        <input type="text" class="form-control" id="customerID">
+                      </div>
+        
+                    </form>
+                    <br>
+                    <div class="text-right">
+                      <button type="submit" class="btn btn-primary btn-md" id="add-btn"><span class="Reso"></span> Make Reservation</button>
+                    </div>
+                  </div>
+                </div>
+        
+              </div>
+            </div>
+          </div>
+        
+          <script type="text/javascript">
+               $("#add-btn").on("click", function(event) {
+              event.preventDefault();
+              var newCharacter = {
+                name: $("#name").val().trim(),
+                role: $("#role").val().trim(),
+                age: $("#age").val().trim(),
+                forcePoints: $("#force-points").val().trim()
+              };
+        
+     
+              $.post("/api/characters", newCharacter)
+                .then(function(data) {
+                  console.log("add.html", data);
+                  alert("Reservation Recieved...");
+                });
+            });
+          </script>
+    <footer class="bottom">
+        <br>
+        <div class="row">
+            <div class="col-sm"></div>
+            <div class="col-sm">Cantina Inc.|</div>
+            <div class="col-sm back"><a href="#">|Waitlist|</a></div>
+            <div class="col-sm back"><a href="#">|Reservations|</a></div>
+        </div>
+        <br>
+    </footer>
+</body>
+</html>
