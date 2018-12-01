@@ -63,7 +63,7 @@ function tableQuery() {
     $.ajax({url: "/api/tables", method: "GET"})
     .then(function(tableData) {
         console.log(tableData);
-        console.log('~~~~');
+        console.log('~~~~~~~~~~~~~~~~~~~~~~~~~~');
 
         for (var i = 0; i < tableData.length; i++){
             var tableList = $("#tableList")
