@@ -1,0 +1,22 @@
+extends layout
+
+block content
+  h1= Cantina Caliente
+    p.text Welcome to the hottest Cantina in town, only have 5 tables! Book now or try to land on our waitlist;
+
+
+var express = require('express');
+var app = express();
+
+//set view engine
+app.set("view engine","jade")
+
+app.get('/', function (req, res) {
+
+    res.render('sample');
+
+});
+
+var server = app.listen(5000, function () {
+    console.log('Node server is running..');
+});
